@@ -1,0 +1,322 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template for AIMS Rwanda Assignments         %%%              %%%
+%%% Author:   AIMS Rwanda tutors                             %%%   ###        %%%
+%%% Email: tutors2017-18@aims.ac.rw                               %%%   ###        %%%
+%%% Copyright: This template was designed to be used for    %%% #######      %%%
+%%% the assignments at AIMS Rwanda during the academic year %%%   ###        %%%
+%%% 2017-2018.                                              %%%   #########  %%%
+%%% You are free to alter any part of this document for     %%%   ###   ###  %%%
+%%% yourself and for distribution.                          %%%   ###   ###  %%%
+%%%                                                         %%%              %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%% Ensure that you do not write the questions before each of the solutions because it is not necessary. %%%%%% 
+
+\documentclass[12pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% packages %%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{psfrag}
+
+%%%%%%%%%%%%%%%%%%%%% students data %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\student}{Yves Bonheur Mugiraneza}
+\newcommand{\course}{Operation Research}
+\newcommand{\assignment}{2}
+
+%%%%%%%%%%%%%%%%%%% using theorem style %%%%%%%%%%%%%%%%%%%%
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{coro}[thm]{Corollary}
+\newtheorem{quest}{Question}[section]
+
+%%%%%%%%%%%%%%  Shortcut for usual set of numbers  %%%%%%%%%%%
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\usepackage{enumitem}
+\usepackage{systeme}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+\begin{document}
+	
+	%%%%%%%%%%%%%%%%%%%%%%% title page %%%%%%%%%%%%%%%%%%%%%%%%%%
+	\thispagestyle{empty}
+	\begin{center}
+		\textbf{AFRICAN INSTITUTE FOR MATHEMATICAL SCIENCES \\[0.5cm]
+			(AIMS RWANDA, KIGALI)}
+		\vspace{1.0cm}
+	\end{center}
+	
+	%%%%%%%%%%%%%%%%%%%%% assignment information %%%%%%%%%%%%%%%%
+	\noindent
+	\rule{17cm}{0.2cm}\\[0.3cm]
+	Name: \student \hfill Assignment Number: \assignment\\[0.1cm]
+	Course: \course \hfill Date: \today\\
+	\rule{17cm}{0.05cm}
+	\vspace{1.0cm}
+	
+	\section*{Question 1}
+	The problem described is formulated as an integer optimization mode below:\\
+	\\
+    Decision variables:
+    Let $A$ denote the units of product A supposed to be produced and $B$ denote the units of product B supposed to be produced. To produce one unit of product A takes 2 hours and B takes 3 hours,mathematically is $2A+3B$. since it is only possible to produce discrete number of products and the profit has to be maximized and the profit for each unit of product A is 200 \$ and for product B 400 \$. We have $$Max~ z = 200 A + 400 B$$
+    Let $y_1$ shows usage extra time, $y1=1$ if additional time is used and 0 if otherwise.
+    Let $y2=1$ if more than 10 units of product $A $is produced, and 0 if otherwise. \\
+    The model representation:\\
+
+    \begin{align*}
+        Max ~z &= 200\,A + 400\,B – 1200\,y_1\\
+        \text{s.t } 2A + 3 B    &\leq  40 + 8y_1 \quad(\text{ limited time})\\
+        y_2 &\geq \frac{1}{A-10} (A – 10) \quad  (\text{more than ten A product})\\
+        B &\geq 5y_2 \quad \text{(at least 5 B)}\\
+        A &\geq 0, B \geq 0, integer; y_1, y_2 \{0,1\}
+    \end{align*}
+	\newpage
+	\section*{Question 2}
+	
+	We are given following LP problem :
+	\begin{align}
+	Max\quad z = 3x_1 – x_2 + x_3\\
+	subjected~to~\quad
+	x_1 + 2x_2 + x_3 \leq 4\\
+	2x_1 – x _2 + x_3 \geq 1\\
+	x_1 \geq 0 , x_2 \geq 0,x_3\leq 0
+	\end{align}
+	Given problem can normally be solved by solving it's dual using simplex method.\\
+	The dual problem is \\
+	\begin{align*}
+	\text{max } G=4v_1+v_2 \\
+	\text{subject to } 
+	v_1+2v_2\leq 3\\
+	2v_1 - v_2\leq -1\\
+	v_1 + v_2 \geq 1\\
+	v_1\leq 0, v_2\geq 0
+	\end{align*}
+	let $w_1=-v_1$ and $w_2 =v_2$ then our dual become
+	\begin{align*}
+	\text{max } G=-4y_1+y_2 \\
+	\text{subject to } 
+	-y_1+2y_2\leq 3\\
+	-2y_1 - y_2\leq -1\\
+	-y_1 + y_2 \geq 1\\
+	y_1\geq 0, y_2\geq 0
+	\end{align*}
+	In order to solve this using simplex method we first have to multiply second constraint by -1:
+	\begin{align*}
+	\text{max } G=-4y_1+y_2 \\
+	\text{subject to } 
+	-y_1+2y_2\leq 3\\
+	2y_1 + y_2\geq 1\\
+	-y_1 + y_2 \geq 1\\
+	y_1\geq 0, y_2\geq 0
+	\end{align*}
+	Then we convert it into canonical form\\
+	\begin{align*}
+	\text{max } G=-4y_1+y_2+0s_1+ 0s_2+0s_3-MA_1-MA_2 \\
+	\text{subject to } 
+	-y_1+2y_2+s_1 = 3\\
+	2y_1 + y_2 -s_2+A_1 = 1\\
+	-y_1 + y_2 -s_3 +A_2 = 1\\
+	y_1, y_2,s_1,s_3,s_2,A_1,A_2\geq 0
+	\end{align*}
+	Then we can proceed by solving the problem using simplex method.\\\\
+		
+		\underline{\textbf{Simplex tableau 1}}\\\\
+		The simplex tableau is as follow: \\
+		
+		\begin{tabular}{cc|ccccccc|cc}
+			\hline 
+			$C_B$& $y_B $&$ y_1$ & $y_2$ & $s_1$ & $s_2$ & $s_3$ & $A_1$ & $A_2$ & $b_i$ & $b/x_i$ \\ 
+			\hline 
+		  0  &  $s_1$ & $-1$ & $2$ & $1$ & $0$ & $0$ & $0$ & $0$ &$3$ & $3/2$\\ 
+%			\hline 
+		  -M &  $A_1$ & $2$ & $\textcircled 1$ & $0$ & $-1$ & $0$ & $1$ & $0$ & $1$& $1\rightarrow$\\ 
+%			\hline 
+			-M &  $A_2$ & $-1$ & $1$ & $0$ & $0$ & $-1$ & $0$ & $1$ & $1$ & $1$ \\ 
+			\hline 
+			& $ c_j$ & $-4$ & $1$ & $0$ & $0$ & $0$ & $-M$ & $-M$ &  & \\ 
+			\hline
+			& $ z_j$ & $-M$ & $-2M$ & $0$ & $M$ & $M$ & $-M$ & $-M$ & $-2M$ & \\ 
+			\hline 
+			&  $z_j-c_j$& $4-M$ & $-2M-1$ & $0$ & $M$ & $M$ & $0$ & $0$ & $-2M$ &\\ 
+			\hline 
+			&  &  & $\uparrow$ &  &  &  &  &  &  & \\ 
+%			\hline 
+		\end{tabular} \\
+		From tableau 1 we can find pivot column which is the column with most negative $z_j-c_j$ number (that is the least number since we are maximizing). \\
+		Since in the entries of $Z_j-C_j$ there are still negative number we have to do another iteration.
+			The pivot row ,$p$, is $( 2,1,0,-1, 0 , 1 , 0,1)$\\
+			New simplex tableau rows will be obtained by :\\
+			where $p$ is the pivot row, $R_1,R_2,R_3,R_4,R_5$ are the rows of the tableau
+			\begin{align*}
+			R_1 &-> R_1-2p\\
+			R_2 &-> p\\
+			R_3 &-> R_3 - p\\
+			\end{align*}
+		\textbf{\underline{Simplex Tableau 2}}\\
+		The simplex tableau is as follow: \\
+		
+		\begin{tabular}{cc|cccccc|cc}
+			\hline 
+			$C_B$& $y_B $&$ y_1$ & $y_2$ & $s_1$ & $s_2$ & $s_3$ & $A_2$ & $b_i$ & $b/x_i$ \\ 
+			\hline 
+			0  &  $s_1$ & $-5$ & $0$ & $1$ & $2$ & $0$ & $0$  &$1$ & $1/2$\\ 
+			%			\hline 
+			-M &  $x_2$ & $2$ & $1$ & $0$ & $-1$  & $0$ & $0$ & $1$& $-$\\ 
+			%			\hline 
+			$-M$ &  $A_2$ & $-3$ & $0$ & $0$ & $\textcircled1$ & $-1$ & $1$ &  $0$ & $0$ $\rightarrow$\\ 
+			\hline 
+			& $ c_j$ & $-4$ & $1$ & $0$ & $0$  & $-M$ & $-M$ &  & \\ 
+			\hline
+			& $ z_j$ & $3M+2$ & $1$ & $0$ & $-M-1$ & $M$ & $-M$ & $1$ & \\ 
+			\hline 
+			&  $z_j-c_j$& $3M+6$ & $0$ & $0$  & $-M-1$ & $M$ & $0$ &  &\\ 
+			\hline 
+			&  &  &  &  & $\uparrow$ &  &  &  &   \\ 
+			%			\hline 
+		\end{tabular} \\
+		From tableau 2 we can find pivot column which is the column with most negative $z_j-c_j$ number (that is the least number since we are maximizing). \\
+		Since in the entries of $Z_j-C_j$ there are still negativeThe profit for each unit of product A is 200 $ and for product B 400 $ number we have to do another iteration.
+		The pivot row ,$p$, is $( -3,0,0,1, -1 , 1 , 0)$\\
+		New simplex tableau rows will be obtained by :\\
+		where $p$ is the pivot row, $R_1,R_2,R_3,R_4,R_5$ are the rows of the tableau
+		\begin{align*}
+		R_1 &-> R_1-2p\\
+		R_2 &-> R_2+p\\
+		R_3 &-> p\\
+		\end{align*}
+		\textbf{\underline{Simplex Tableau 3}}\\
+		The simplex tableau is as follow: \\
+		
+		\begin{tabular}{cc|ccccc|cc}
+			\hline 
+			$C_B$& $y_B $&$ y_1$ & $y_2$ & $s_1$ & $s_2$ & $s_3$ & $b_i$ & $b/x_i$ \\ 
+			\hline 
+			$0$  &  $s_1$ & $1$ & $0$ & $$1$$ & $0$ & $\textcircled 2$   &$1$ & $1/2 \rightarrow$\\ 
+			%			\hline 
+			$1$ &  $x_2$ & $-1$ & $1$ & $0$ & $0$  & $-1$  & $1$& $-$\\ 
+			%			\hline 
+			$0$ &  $s_2$ & $-3$ & $0$ & $0$ & $1$ & $1$ & $0$  & $-$ \\ 
+			\hline 
+			& $ c_j$ & $-4$ & $1$ & $0$ & $0$  & $-M$ & $-M$   & \\ 
+			\hline
+			& $ z_j$ & $-1$ & $1$ & $0$ & $0$ & $-1$ & $1$  & \\ 
+			\hline 
+			&  $z_j-c_j$& $3$ & $0$ & $0$  & $0$ & $-1$  &  &\\ 
+			\hline 
+			&  &  &  &  &  & $\uparrow$ &  &    \\ 
+			%			\hline 
+		\end{tabular} \\
+		From tableau 3 we can find pivot column which is the column with most negative $z_j-c_j$ number (that is the least number since we are maximizing). \\
+		Since in the entries of $Z_j-C_j$ there are still negative number we have to do another iteration.
+		The pivot row ,$p$, is $( 1/2,0,1/2,0, 1 , 0 , 1/2)$\\
+		New simplex tableau rows will be obtained by :\\
+		where $p$ is the pivot row, $R_1,R_2,R_3,R_4,R_5$ are the rows of the tableau
+		\begin{align*}
+		R_1 &-> p\\
+		R_2 &-> R_2+p\\
+		R_3 &-> R_3+p\\
+		\end{align*}
+		\textbf{\underline{Simplex Tableau 3}}\\
+		The simplex tableau is as follow: \\
+		
+		\begin{tabular}{cc|ccccc|cc}
+			\hline 
+			$C_B$& $y_B $&$ y_1$ & $y_2$ & $s_1$ & $s_2$ & $s_3$ & $b_i$ & $b/x_i$ \\ 
+			\hline 
+			$0$  &  $s_3$ & $1/2$ & $0$ & $1/2$ & $0$ & $1$ & $1/2$&\\ 
+			%			\hline 
+			$1$ &  $y_2$ & $-1/2$ & $1$ & $1/2$ & $0$  & $0$  & $3/2$ & $-$\\ 
+			%			\hline 
+			$0$ &  $As2$ & $-5/2$ & $0$ & $1/2$ & $1$ & $0$ & $1/2$  & $-$ \\ 
+			\hline 
+			& $ c_j$ & $-4$ & $1$ & $0$ & $0 $ & $-M$ & $-M $  & \\ 
+			\hline
+			& $ z_j$ & $-1/2 $& $1 $& $0$ & $1/2$ & $0$ & $1.5$ &\\ 
+			\hline 
+			&  $z_j-c_j$& $7/2$ & $0$ & $1/2$  & $0$ & $0$  &  &\\ 
+			\hline 
+			&  &  &  &  &  & $\uparrow$ &  &    \\ 
+			%			\hline 
+		\end{tabular} \\
+	
+		Since all $z_j-c_j\geq 0$ there is no further iteration. Hence the optimal solution is arrived with value of variable $y_1=0$ and $y_1=3/2$.
+	
+	\begin{enumerate}[label=(\alph*)]
+		\item And we are asked to check if the point $(x_1 , x _2 , x _3 ) = (6/5, 7/5, 0)$ an optimal solution.\\
+		To check whether this point is an optimal solution we can use duality theorem.\\
+		\begin{thm}
+			Duality theorem: If an optimal solution exists to either the primal or
+			symmetric dual LP problem, then the other program has also an optimal
+			solution and the two objective functions have the same value. Formally, let
+			$X= (x_1,\cdots, x_n )^T$ be the optimal solution to the primal and
+			$W= ( w_1 . . . , w_n )$ be the optimal solution to the symmetric dual. Then, it follows that 
+			\begin{align*}
+			C^TX&= W^TB\\
+			X&=(6/5,7/5,0)\\
+			C^T&=(3,-1,1)\\
+			B^T&=(4,1)\\
+			\left( \begin{array}{cccc} 3 & -1 & 1 \end{array} \right)\left( \begin{array}{c} 6/5 \\\\ 7/5 \\\\ 0 \end{array} \right)= \left(\begin{array}{cc}4 & 1 \end{array}\right)\left( \begin{array}( 0\\\\ 3/2 \end{array} \right)
+			\end{align*}
+			
+		\end{thm}
+		
+		\item And we are asked to check if the point $(x_1 , x_2 , x_3 ) = (1/2, 0, 0)$ an optimal solution.
+	\end{enumerate} 
+
+    \newpage
+	\section*{Question 3}
+	We have been asked to study the following LP problem using duality concept.
+	\begin{align}
+	Max\quad z = c_1 x_1 + c_2 x_2\\
+	subjected~to~\quad
+	–x_1 + x_2 \leq 1\\
+	x_1 + 2x_2 \leq 2\\
+	2x_1 + x_2 \geq 0\\
+	2x_1 – 2x_2 \leq 1\\
+	x_1 \geq 0 , x_2 \geq 0
+	\end{align}
+	
+	\begin{enumerate}[label=(\alph*)]
+		\item  determine the primal solution where the dual variables are given by the vector $V=(0, 1/3, 0, 2/3)^T$.\\
+		From the theorem of complementary slackness which states that :
+		\begin{thm}\label{thm1}
+			Assume that $\bar{X}$ is a feasible solution to the primal problem and $\bar{X}$ is a feasible solution to its dual form. Then $\bar{X}$ and
+			$\bar{W}$ are optimal solutions to their respective problem if and only if the
+			complementary slackness constraints,
+			$$\bar{W}^T( B - A\bar{X})= 0 \,\text{or} \,\bar{X}^T (A^T \bar{W}-C )= 0$$
+		\end{thm}
+		we can slove to get the primal solution that is values of $X$.\\
+		\begin{align}
+		&\bar{W}^T( B - A\bar{X})= 0\\
+		\text{since }W&=(0, 1/3, 0, 2/3)^T\\
+		 A\bar{X} &= \systeme{–x_1 + x_2,x_1 + 2x_2,2x_1 + x_2,2x_1-2x_2} ~\text{and}~ B=(1,2,0,1)^T\\
+		 \text{then}&\left( \begin{array}{cccc} 0 & \frac{1}{3} & 0 & \frac{2}{3} \\\\ \end{array} \right)\left( \begin{array}{c} 1-(–x_1 + x_2) \\\\ 2-(x_1 + 2x_2) \\\\ 0-(2x_1 + x_2)\\\\ 1-(2x_1-2x_2)\end{array} \right)=0\\
+		 &\Rightarrow \systeme{-\frac{x_1}{3}-\frac{2x_2}{3} + \frac{2}{3}=0,-\frac{4x_1}{3}+\frac{4x_2}{3} + \frac{2}{3}=0}\\
+		 \end{align}
+		 and when we solve this system of equation we get $x_1=1$ and $x_2=\frac{1}{2}$.
+		 
+		 \item 
+	\end{enumerate}
+
+\end{document}
